@@ -18,9 +18,9 @@ from Function import *
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('ZbWIGQOfoxOLqko0Fhh/OTjBMeeXrd+Py4xyAaNeFsa0bVP3vY05ZyOZEVj8cS9Zu+PDXGMfIUDzAGhFEjHVMN8J9ocEZsuGotbuRhzeQTML221ynVdVwXntBcIP4Ft+Sy0omAoemN84m8OxTJbFWQdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('1NDrZ35w725RDNQ64qdzHxK95U/TDFKd58zP5jDAA+5RYnCOmXMR34DNojBZ26IFcwR7jPs4B45rvbZBbYhsiLKqbzQxyyW4vMMIBQaejry4M5gzaS+TcxIxAatUfw1T/FZLi9pohBw4lUZJJDqx8wdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('eeed6c17319b3f197e255e08bc2e98c3')
+handler = WebhookHandler('f0892b2e581d5e12f55e82dda107a6d4')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -41,7 +41,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    if '最新合作廠商' in msg:
+    '''if '最新合作廠商' in msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新活動訊息' in msg:
@@ -59,8 +59,8 @@ def handle_message(event):
     elif '功能列表' in msg:
         message = function_list()
         line_bot_api.reply_message(event.reply_token, message)
-    else:
-        message = TextSendMessage(text=msg)
+    else:'''
+        message = TextSendMessage(text=">>????? " + msg)
         line_bot_api.reply_message(event.reply_token, message)
 
 
